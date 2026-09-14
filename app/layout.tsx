@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       'Premium real estate and infrastructure solutions in Hyderabad. Building Trust. Creating Value. Delivering Excellence.',
     images: [
       {
-        url: '/images/hero-bg.png',
+        url: '/images/hero-banner.jpg',
         width: 1200,
         height: 630,
         alt: 'Wishrock Infratech LLP',
