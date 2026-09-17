@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
 
@@ -10,7 +11,7 @@ const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Industries', href: '#industries' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
@@ -26,10 +27,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const pathname = usePathname()
+  const router = useRouter()
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (!href.startsWith('#')) return router.push(href)
+    if (pathname !== '/') return router.push(`/${href}`)
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -43,7 +48,14 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="#home" onClick={() => handleNavClick('#home')} className="flex-shrink-0">
+            <Link
+              href="/#home"
+              onClick={(e) => {
+                e.preventDefault()
+                handleNavClick('#home')
+              }}
+              className="flex-shrink-0"
+            >
               <Image
                 src="/images/wishrock-logo.png"
                 alt="Wishrock Infratech LLP"

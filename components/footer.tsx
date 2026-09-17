@@ -1,13 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { Phone, Mail, MapPin, MessageCircle, ArrowUp } from 'lucide-react'
 
 const quickLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About Us', href: '#about' },
   { label: 'Services', href: '#services' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Industries', href: '#industries' },
   { label: 'Why Choose Us', href: '#why-us' },
   { label: 'Gallery', href: '#gallery' },
@@ -34,9 +35,12 @@ const emails = [
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const pathname = usePathname()
+  const router = useRouter()
   const handleNavClick = (href: string) => {
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (!href.startsWith('#')) return router.push(href)
+    if (pathname !== '/') return router.push(`/${href}`)
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
