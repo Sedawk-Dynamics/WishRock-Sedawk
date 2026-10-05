@@ -5,13 +5,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '/projects' },
+  {
+    label: 'Properties',
+    href: '/properties/dsr-ciel',
+    children: [
+      { label: 'DSR CIEL', sub: 'Gopanpally · 3 BHK', href: '/properties/dsr-ciel' },
+      { label: 'DSR VALAR', sub: 'Kokapet · 4 BHK', href: '/properties/dsr-valar' },
+    ],
+  },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
@@ -20,6 +27,8 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const [mobileSub, setMobileSub] = useState<string | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -68,16 +77,61 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-sm font-medium tracking-wide transition-colors duration-200 text-[#1A1A1A] hover:text-[#D42B2B] relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D42B2B] transition-all duration-300 group-hover:w-full" />
-                </button>
-              ))}
+              {navLinks.map((link) =>
+                link.children ? (
+                  <div
+                    key={link.label}
+                    className="relative"
+                    onMouseEnter={() => setOpenMenu(link.label)}
+                    onMouseLeave={() => setOpenMenu(null)}
+                  >
+                    <button
+                      onClick={() => setOpenMenu(openMenu === link.label ? null : link.label)}
+                      className="flex items-center gap-1 text-sm font-medium tracking-wide text-[#1A1A1A] hover:text-[#D42B2B] transition-colors duration-200"
+                      aria-expanded={openMenu === link.label}
+                      aria-haspopup="true"
+                    >
+                      {link.label}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${openMenu === link.label ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {openMenu === link.label && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.18 }}
+                          className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64"
+                        >
+                          <div className="bg-white rounded-xl shadow-2xl border border-[#E8E8E8] overflow-hidden">
+                            <div className="h-0.5 bg-[#D42B2B]" />
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => setOpenMenu(null)}
+                                className="block px-5 py-3.5 hover:bg-[#FFF5F5] transition-colors border-b border-[#F0F0F0] last:border-0"
+                              >
+                                <span className="block text-sm font-bold text-[#1A1A1A]">{child.label}</span>
+                                <span className="block text-xs text-[#888] mt-0.5">{child.sub}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <button
+                    key={link.label}
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-sm font-medium tracking-wide transition-colors duration-200 text-[#1A1A1A] hover:text-[#D42B2B] relative group"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D42B2B] transition-all duration-300 group-hover:w-full" />
+                  </button>
+                )
+              )}
             </nav>
 
             {/* CTA + Mobile */}
@@ -138,16 +192,54 @@ export default function Navbar() {
 
               <nav className="flex flex-col gap-1 p-6 flex-1">
                 {navLinks.map((link, i) => (
-                  <motion.button
+                  <motion.div
                     key={link.label}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    onClick={() => handleNavClick(link.href)}
-                    className="text-left text-base font-medium text-[#1A1A1A] hover:text-[#D42B2B] py-3 px-4 rounded hover:bg-[#FFF5F5] transition-all duration-200"
                   >
-                    {link.label}
-                  </motion.button>
+                    {link.children ? (
+                      <>
+                        <button
+                          onClick={() => setMobileSub(mobileSub === link.label ? null : link.label)}
+                          className="w-full flex items-center justify-between text-left text-base font-medium text-[#1A1A1A] hover:text-[#D42B2B] py-3 px-4 rounded hover:bg-[#FFF5F5] transition-all duration-200"
+                          aria-expanded={mobileSub === link.label}
+                        >
+                          {link.label}
+                          <ChevronDown className={`w-4 h-4 transition-transform ${mobileSub === link.label ? 'rotate-180' : ''}`} />
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {mobileSub === link.label && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden"
+                            >
+                              {link.children.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block pl-8 pr-4 py-3 rounded hover:bg-[#FFF5F5] transition-colors"
+                                >
+                                  <span className="block text-sm font-semibold text-[#1A1A1A]">{child.label}</span>
+                                  <span className="block text-xs text-[#888]">{child.sub}</span>
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <button
+                        onClick={() => handleNavClick(link.href)}
+                        className="w-full text-left text-base font-medium text-[#1A1A1A] hover:text-[#D42B2B] py-3 px-4 rounded hover:bg-[#FFF5F5] transition-all duration-200"
+                      >
+                        {link.label}
+                      </button>
+                    )}
+                  </motion.div>
                 ))}
               </nav>
 

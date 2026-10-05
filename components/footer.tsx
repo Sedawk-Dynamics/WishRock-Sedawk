@@ -8,7 +8,7 @@ const quickLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About Us', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Properties', href: '/properties/dsr-ciel' },
   { label: 'Industries', href: '#industries' },
   { label: 'Why Choose Us', href: '#why-us' },
   { label: 'Gallery', href: '#gallery' },

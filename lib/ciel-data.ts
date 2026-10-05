@@ -21,6 +21,7 @@ export const images = {
   aerial: '/projects/ciel/aerial.png',
   nightView: '/projects/ciel/night-view.png',
   masterplan: '/projects/ciel/masterplan.png',
+  masterplanDetailed: '/projects/ciel/masterplan-detailed.jpg',
   floorPlans: '/projects/ciel/floor-plans.png',
   locationMap: '/projects/ciel/location-map.png',
   sitePlan: '/site-image.png',

@@ -24,17 +24,17 @@ export default function FeaturedProjectSection() {
         {/* Images */}
         <FadeIn direction="right">
           <div className="relative grid grid-cols-5 gap-4">
-            <Link href="/projects" className="group col-span-3 relative rounded-2xl overflow-hidden aspect-[606/825] shadow-2xl">
+            <Link href="/properties/dsr-ciel" className="group col-span-3 relative rounded-2xl overflow-hidden aspect-[606/825] shadow-2xl">
               <Image src={images.aerial} alt="DSR CIEL aerial view" fill sizes="(min-width: 1024px) 30vw, 60vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
               <span className="absolute top-4 left-4 bg-[#D42B2B] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded">
                 Featured Project
               </span>
             </Link>
             <div className="col-span-2 flex flex-col gap-4">
-              <Link href="/projects#gallery" className="group relative flex-1 rounded-2xl overflow-hidden shadow-xl">
+              <Link href="/properties/dsr-ciel#gallery" className="group relative flex-1 rounded-2xl overflow-hidden shadow-xl">
                 <Image src={images.nightView} alt="DSR CIEL at night" fill sizes="20vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
               </Link>
-              <Link href="/projects#masterplan" className="group relative flex-1 rounded-2xl overflow-hidden shadow-xl bg-[#E8DCDC]">
+              <Link href="/properties/dsr-ciel#masterplan" className="group relative flex-1 rounded-2xl overflow-hidden shadow-xl bg-[#E8DCDC]">
                 <Image src={images.masterplan} alt="DSR CIEL masterplan" fill sizes="20vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
               </Link>
             </div>
@@ -89,7 +89,7 @@ export default function FeaturedProjectSection() {
               {units.map((u) => (
                 <Link
                   key={u.size}
-                  href="/projects#floor-plans"
+                  href="/properties/dsr-ciel#floor-plans"
                   className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm hover:border-[#D42B2B] hover:text-white hover:bg-[#D42B2B]/10 transition-colors"
                 >
                   <span className="font-bold">{u.size}</span> sft · <span className="text-white/50">{u.facing}</span>
@@ -101,7 +101,7 @@ export default function FeaturedProjectSection() {
           <FadeIn delay={0.2}>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
-                href="/projects"
+                href="/properties/dsr-ciel"
                 className="group inline-flex items-center gap-2 bg-[#D42B2B] text-white font-semibold px-7 py-3.5 rounded hover:bg-[#B01F1F] transition-all shadow-lg hover:-translate-y-0.5"
               >
                 Explore DSR CIEL
@@ -116,6 +116,24 @@ export default function FeaturedProjectSection() {
                 <MessageCircle className="w-4 h-4" /> Get Price Breakup
               </a>
             </div>
+          </FadeIn>
+
+          {/* Other property */}
+          <FadeIn delay={0.25}>
+            <Link
+              href="/properties/dsr-valar"
+              className="group mt-8 flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-[#D42B2B]/50 px-5 py-4 transition-colors"
+            >
+              <div>
+                <p className="text-white/40 text-[10px] uppercase tracking-widest">Also selling</p>
+                <p className="text-white font-bold font-serif text-lg mt-0.5">
+                  DSR <span className="text-[#D42B2B]">VALAR</span>
+                  <span className="text-white/50 font-sans font-normal text-sm"> · Kokapet</span>
+                </p>
+                <p className="text-white/50 text-xs mt-0.5">4 BHK · 3,242 – 4,090 sft · ₹3.50 Cr onwards</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-[#D42B2B] flex-shrink-0 transition-transform group-hover:translate-x-1" />
+            </Link>
           </FadeIn>
         </div>
       </div>

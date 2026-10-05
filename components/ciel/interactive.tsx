@@ -15,12 +15,17 @@ import {
   Sparkles,
 } from 'lucide-react'
 import {
-  blocks,
+  blocks as cielBlocks,
   clubhouseFacilities,
   outdoorAmenities,
-  specifications,
+  specifications as cielSpecs,
   type Facing,
+  type Unit,
 } from '@/lib/ciel-data'
+
+export interface Block { id: string; label: string; units: Unit[] }
+export interface AmenityTab { id: string; label: string; items: string[] }
+export interface Spec { title: string; text: string }
 
 /* ------------------------------------------------------------------ */
 /* Sticky section nav with active-section highlight                     */
@@ -212,7 +217,7 @@ const facingColor: Record<Facing, string> = {
   North: 'bg-emerald-100 text-emerald-800',
 }
 
-export function FloorPlans({ floorPlanSrc }: { floorPlanSrc: string }) {
+export function FloorPlans({ floorPlanSrc, blocks = cielBlocks, split = true }: { floorPlanSrc: string; blocks?: Block[]; split?: boolean }) {
   const [blockId, setBlockId] = useState(blocks[0].id)
   const [selected, setSelected] = useState<string | null>(null)
   const [planOpen, setPlanOpen] = useState<number | null>(null)
@@ -253,10 +258,12 @@ export function FloorPlans({ floorPlanSrc }: { floorPlanSrc: string }) {
           className="object-cover"
         />
         {/* Dim the half of the sheet that isn't the selected block */}
-        <div className="absolute inset-0 grid grid-cols-2 pointer-events-none">
-          <div className={`transition-colors duration-500 ${blockId === 'abef' ? '' : 'bg-white/70'}`} />
-          <div className={`transition-colors duration-500 ${blockId === 'cd' ? '' : 'bg-white/70'}`} />
-        </div>
+        {split && (
+          <div className="absolute inset-0 grid grid-cols-2 pointer-events-none">
+            <div className={`transition-colors duration-500 ${blockId === blocks[0].id ? '' : 'bg-white/70'}`} />
+            <div className={`transition-colors duration-500 ${blockId === blocks[1]?.id ? '' : 'bg-white/70'}`} />
+          </div>
+        )}
         <span className="absolute top-4 right-4 flex items-center gap-1.5 bg-[#D42B2B] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
           <ZoomIn className="w-3.5 h-3.5" /> View full plan
         </span>
@@ -304,11 +311,13 @@ export function FloorPlans({ floorPlanSrc }: { floorPlanSrc: string }) {
 /* Amenities tabs                                                       */
 /* ------------------------------------------------------------------ */
 
-export function AmenitiesTabs({ clubhouseImage }: { clubhouseImage?: string }) {
-  const tabs = [
-    { id: 'club', label: 'The CIEL House', icon: Dumbbell, items: clubhouseFacilities },
-    { id: 'outdoor', label: 'Outdoor & Landscape', icon: Trees, items: outdoorAmenities },
-  ]
+const defaultTabs: AmenityTab[] = [
+  { id: 'club', label: 'The CIEL House', items: clubhouseFacilities },
+  { id: 'outdoor', label: 'Outdoor & Landscape', items: outdoorAmenities },
+]
+
+export function AmenitiesTabs({ clubhouseImage, tabs: tabsIn = defaultTabs }: { clubhouseImage?: string; tabs?: AmenityTab[] }) {
+  const tabs = tabsIn.map((t, i) => ({ ...t, icon: i === 0 ? Dumbbell : Trees }))
   const [tab, setTab] = useState(tabs[0].id)
   const current = tabs.find((t) => t.id === tab)!
 
@@ -372,11 +381,11 @@ export function AmenitiesTabs({ clubhouseImage }: { clubhouseImage?: string }) {
 /* Specifications accordion                                             */
 /* ------------------------------------------------------------------ */
 
-export function SpecsAccordion() {
+export function SpecsAccordion({ items = cielSpecs }: { items?: Spec[] }) {
   const [open, setOpen] = useState<number | null>(0)
   return (
     <div className="grid md:grid-cols-2 gap-3">
-      {specifications.map((s, i) => {
+      {items.map((s, i) => {
         const isOpen = open === i
         return (
           <div key={s.title} className={`rounded-xl border bg-white transition-all ${isOpen ? 'border-[#D42B2B]/40 shadow-md' : 'border-[#E8E8E8]'}`}>
