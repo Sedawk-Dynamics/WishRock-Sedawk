@@ -21,7 +21,9 @@ export const images = {
   aerial: '/projects/ciel/aerial.png',
   nightView: '/projects/ciel/night-view.png',
   masterplan: '/projects/ciel/masterplan.png',
-  masterplanDetailed: '/projects/ciel/masterplan-detailed.jpg',
+  masterplanDetailed: '/projects/ciel/masterplan-v2.jpg',
+  floorPlanAbef: '/projects/ciel/floor-plan-abef.jpg',
+  floorPlanCd: '/projects/ciel/floor-plan-cd.jpg',
   floorPlans: '/projects/ciel/floor-plans.png',
   locationMap: '/projects/ciel/location-map.png',
   sitePlan: '/site-image.png',
@@ -47,10 +49,11 @@ export interface Unit {
   facing: Facing
 }
 
-export const blocks: { id: string; label: string; units: Unit[] }[] = [
+export const blocks: { id: string; label: string; plan: string; units: Unit[] }[] = [
   {
     id: 'abef',
     label: 'Blocks A, B, E & F',
+    plan: '/projects/ciel/floor-plan-abef.jpg',
     units: [
       { no: '01', size: 2800, facing: 'West' },
       { no: '02', size: 2205, facing: 'West' },
@@ -62,6 +65,7 @@ export const blocks: { id: string; label: string; units: Unit[] }[] = [
   {
     id: 'cd',
     label: 'Blocks C & D',
+    plan: '/projects/ciel/floor-plan-cd.jpg',
     units: [
       { no: '01', size: 2420, facing: 'West' },
       { no: '02', size: 2205, facing: 'West' },

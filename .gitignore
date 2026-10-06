@@ -13,3 +13,8 @@ __v0_jsx-dev-runtime.ts
 node_modules
 .next/
 .DS_Store
+# Large source artwork (compressed versions are committed instead)
+public/projects/ciel/page*.png
+public/herobanner/*.png
+public/001*.jpeg
+public/dsr-valar/*.png

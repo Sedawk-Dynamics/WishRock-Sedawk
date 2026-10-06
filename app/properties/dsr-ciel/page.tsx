@@ -56,9 +56,9 @@ const gallery = [
   { src: images.nightView, alt: 'DSR CIEL towers seen at night from an aircraft window', caption: 'A View Above Expectation', w: 608, h: 402 },
   { src: images.hero, alt: 'DSR CIEL towers elevation', caption: 'Tower Elevation', w: 1280, h: 1049 },
   { src: images.banner, alt: 'DSR CIEL project highlights banner', caption: 'Luxury That Rises Above', w: 2400, h: 1350 },
-  { src: images.masterplanDetailed, alt: 'DSR CIEL detailed master plan with 46 amenities', caption: 'Detailed Master Plan', w: 2200, h: 3110 },
-  { src: images.masterplan, alt: 'DSR CIEL masterplan', caption: 'Landscape Masterplan', w: 612, h: 812 },
-  { src: images.floorPlans, alt: 'DSR CIEL typical floor plans', caption: 'Typical Floor Plans', w: 1228, h: 821 },
+  { src: images.masterplanDetailed, alt: 'DSR CIEL master plan with 32-point amenity legend', caption: 'Master Plan', w: 2400, h: 3404 },
+  { src: images.floorPlanAbef, alt: 'DSR CIEL typical floor plan for Blocks A, B, E & F', caption: 'Floor Plan — Blocks A, B, E & F', w: 2600, h: 1833 },
+  { src: images.floorPlanCd, alt: 'DSR CIEL typical floor plan for Blocks C & D', caption: 'Floor Plan — Blocks C & D', w: 2600, h: 1833 },
   { src: images.locationMap, alt: 'DSR CIEL location map', caption: 'Location Map', w: 575, h: 726 },
 ]
 
@@ -209,7 +209,7 @@ export default function ProjectsPage() {
           <SectionHeader
             eyebrow="Master Plan"
             title="A Masterplan Built Around Openness"
-            description="Organised around landscape, movement and perspective — six blocks, a clubhouse and 46 numbered amenities, with entry from the 30 m wide road."
+            description="Organised around landscape, movement and perspective — six blocks, a clubhouse and 32 numbered amenities, from the entrance and banquet lawn to the pet park and pickleball court."
           />
 
           {/* Detailed master plan with amenity legend */}
@@ -217,28 +217,24 @@ export default function ProjectsPage() {
             <div className="mb-12">
               <ZoomableImage
                 src={images.masterplanDetailed}
-                alt="DSR CIEL detailed master plan showing Blocks A–F with unit sizes and a legend of 46 amenities"
-                caption="Detailed Master Plan — 46 Amenities"
-                w={2200}
-                h={3110}
+                alt="DSR CIEL master plan showing all six blocks with unit sizes and a legend of 32 amenities"
+                caption="Master Plan"
+                w={2400}
+                h={3404}
                 className="max-w-4xl mx-auto"
               />
               <p className="mt-3 text-center text-sm font-semibold text-[#1A1A1A]">
-                Detailed Master Plan <span className="font-normal text-[#888]">· click to enlarge and read the amenity legend</span>
+                Master Plan <span className="font-normal text-[#888]">· click to enlarge and read the 32-point legend</span>
               </p>
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <FadeIn direction="right">
-              <ZoomableImage src={images.masterplan} alt="DSR CIEL landscape masterplan with 32-point legend" caption="Landscape Masterplan" w={612} h={812} />
-              <p className="mt-3 text-center text-sm font-semibold text-[#1A1A1A]">Landscape Masterplan</p>
-            </FadeIn>
-            <FadeIn direction="left">
+          <FadeIn>
+            <div className="max-w-lg mx-auto">
               <ZoomableImage src={images.sitePlan} alt="DSR CIEL site plan showing six tower blocks, clubhouse and tot lots" caption="Site Plan" w={687} h={868} />
               <p className="mt-3 text-center text-sm font-semibold text-[#1A1A1A]">Site Plan</p>
-            </FadeIn>
-          </div>
+            </div>
+          </FadeIn>
           <FadeIn>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a href={CIEL.sitePlanPdf} download="DSR-CIEL-Site-Plan.pdf" className={primaryBtn}>
@@ -258,7 +254,7 @@ export default function ProjectsPage() {
           <SectionHeader
             eyebrow="Floor Plans"
             title="Choose Your Home"
-            description="Pick a block to explore its typical floor plan — five 3 BHK homes per floor, every one a corner unit."
+            description="Pick a block to see its typical floor plan — five 3 BHK homes per floor, every one a corner unit. Tap the plan to read the room dimensions."
           />
           <FloorPlans floorPlanSrc={images.floorPlans} />
 

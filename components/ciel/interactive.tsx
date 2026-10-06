@@ -23,7 +23,7 @@ import {
   type Unit,
 } from '@/lib/ciel-data'
 
-export interface Block { id: string; label: string; units: Unit[] }
+export interface Block { id: string; label: string; units: Unit[]; plan?: string }
 export interface AmenityTab { id: string; label: string; items: string[] }
 export interface Spec { title: string; text: string }
 
@@ -217,12 +217,13 @@ const facingColor: Record<Facing, string> = {
   North: 'bg-emerald-100 text-emerald-800',
 }
 
-export function FloorPlans({ floorPlanSrc, blocks = cielBlocks, split = true }: { floorPlanSrc: string; blocks?: Block[]; split?: boolean }) {
+export function FloorPlans({ floorPlanSrc, blocks = cielBlocks, split = false }: { floorPlanSrc: string; blocks?: Block[]; split?: boolean }) {
   const [blockId, setBlockId] = useState(blocks[0].id)
   const [selected, setSelected] = useState<string | null>(null)
   const [planOpen, setPlanOpen] = useState<number | null>(null)
 
   const block = blocks.find((b) => b.id === blockId)!
+  const planSrc = block.plan ?? floorPlanSrc
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -247,15 +248,16 @@ export function FloorPlans({ floorPlanSrc, blocks = cielBlocks, split = true }: 
 
       <button
         onClick={() => setPlanOpen(0)}
-        className="group relative block w-full aspect-[1228/821] rounded-2xl overflow-hidden bg-white border border-[#E8E8E8] shadow-lg mb-6"
+        className="group relative block w-full aspect-[2600/1833] rounded-2xl overflow-hidden bg-white border border-[#E8E8E8] shadow-lg mb-6"
         aria-label="Enlarge typical floor plans"
       >
         <Image
-          src={floorPlanSrc}
-          alt="DSR CIEL typical floor plans for Blocks A, B, E, F and Blocks C, D"
+          key={planSrc}
+          src={planSrc}
+          alt={`DSR CIEL typical floor plan — ${block.label}`}
           fill
           sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover"
+          className="object-contain"
         />
         {/* Dim the half of the sheet that isn't the selected block */}
         {split && (
@@ -298,7 +300,7 @@ export function FloorPlans({ floorPlanSrc, blocks = cielBlocks, split = true }: 
       </AnimatePresence>
 
       <Lightbox
-        shots={[{ src: floorPlanSrc, alt: 'DSR CIEL typical floor plans', caption: 'Typical Floor Plans', w: 1228, h: 821 }]}
+        shots={[{ src: planSrc, alt: `DSR CIEL typical floor plan — ${block.label}`, caption: `Typical Floor Plan — ${block.label}`, w: 2600, h: 1833 }]}
         index={planOpen}
         onClose={() => setPlanOpen(null)}
         onIndex={setPlanOpen}
