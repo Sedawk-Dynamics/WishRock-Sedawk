@@ -66,10 +66,10 @@ export default function Navbar() {
               className="flex-shrink-0"
             >
               <Image
-                src="/images/wishrock-logo.png"
+                src="/images/wishrock-logo-v2.png"
                 alt="Wishrock Infratech LLP"
                 width={200}
-                height={52}
+                height={65}
                 className="h-12 w-auto object-contain"
                 priority
               />
@@ -175,10 +175,10 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between p-6 border-b border-[#E8E8E8]">
                 <Image
-                  src="/images/wishrock-logo.png"
+                  src="/images/wishrock-logo-v2.png"
                   alt="Wishrock Infratech LLP"
                   width={160}
-                  height={42}
+                  height={52}
                   className="h-10 w-auto object-contain"
                 />
                 <button

@@ -54,10 +54,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Image
-              src="/images/wishrock-logo.png"
+              src="/images/wishrock-logo-v2.png"
               alt="Wishrock Infratech LLP"
               width={180}
-              height={48}
+              height={58}
               className="h-12 w-auto object-contain brightness-0 invert mb-6"
             />
             <p className="text-white/60 text-sm leading-relaxed mb-6">

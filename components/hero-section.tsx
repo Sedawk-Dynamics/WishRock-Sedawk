@@ -17,28 +17,25 @@ const slides = [
   },
 ]
 
-const AUTOPLAY_MS = 6000
+const AUTOPLAY_MS = 5000
 
 export default function HeroSection() {
   const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
 
   const go = useCallback((dir: number) => {
     setIndex((i) => (i + dir + slides.length) % slides.length)
   }, [])
 
+  // Advance every 5s; the timer restarts whenever the slide changes.
   useEffect(() => {
-    if (paused) return
-    const t = setInterval(() => go(1), AUTOPLAY_MS)
-    return () => clearInterval(t)
-  }, [paused, go, index])
+    const t = setTimeout(() => go(1), AUTOPLAY_MS)
+    return () => clearTimeout(t)
+  }, [go, index])
 
   return (
     <section id="home" className="relative w-full bg-white pt-20">
       <div
-        className="relative w-full aspect-[16/9] max-h-[calc(100svh-11.5rem)] overflow-hidden bg-white"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        className="relative w-full aspect-[16/9] overflow-hidden bg-white"
         role="region"
         aria-roledescription="carousel"
         aria-label="Wishrock Infratech highlights"
@@ -57,7 +54,7 @@ export default function HeroSection() {
               alt={slides[index].alt}
               fill
               sizes="100vw"
-              className="object-cover"
+              className="object-contain"
               priority={index === 0}
             />
           </motion.div>
