@@ -58,7 +58,7 @@ export default function Footer() {
               alt="Wishrock Infratech LLP"
               width={180}
               height={58}
-              className="h-12 w-auto object-contain brightness-0 invert mb-6"
+              className="h-20 w-auto object-contain brightness-0 invert mb-6"
             />
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Wishrock Infratech LLP — Hyderabad&apos;s trusted real estate and infrastructure company. 

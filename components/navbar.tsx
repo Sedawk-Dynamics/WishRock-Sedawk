@@ -70,7 +70,7 @@ export default function Navbar() {
                 alt="Wishrock Infratech LLP"
                 width={200}
                 height={65}
-                className="h-12 w-auto object-contain"
+                className="h-16 w-auto object-contain"
                 priority
               />
             </Link>
@@ -179,7 +179,7 @@ export default function Navbar() {
                   alt="Wishrock Infratech LLP"
                   width={160}
                   height={52}
-                  className="h-10 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
                 <button
                   onClick={() => setMobileOpen(false)}
