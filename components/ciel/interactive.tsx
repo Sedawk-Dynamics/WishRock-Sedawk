@@ -50,7 +50,7 @@ export function SectionNav({ items }: { items: { label: string; href: string }[]
   }, [items])
 
   return (
-    <nav className="sticky top-20 z-40 bg-white/95 backdrop-blur border-b border-[#E8E8E8] shadow-sm">
+    <nav className="sticky top-26 z-40 bg-white/95 backdrop-blur border-b border-[#E8E8E8] shadow-sm">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none]">
         {items.map((item) => {
           const isActive = active === item.href

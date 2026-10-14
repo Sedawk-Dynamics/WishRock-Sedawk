@@ -80,7 +80,7 @@ export default function ValarPage() {
       <Navbar />
 
       {/* ============ HERO ============ */}
-      <section className="relative bg-white pt-20">
+      <section className="relative bg-white pt-26">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <FadeIn>
             <span className="inline-flex items-center gap-2 bg-[#F7F7F7] border border-[#E8E8E8] text-[#1A1A1A] text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
@@ -143,7 +143,7 @@ export default function ValarPage() {
       <SectionNav items={sectionNav} />
 
       {/* ============ OVERVIEW ============ */}
-      <section id="overview" className="scroll-mt-36 py-24 bg-white">
+      <section id="overview" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <SectionHeader eyebrow="Project Overview" title="Only 282 Homes. Each One a Statement." centered={false} />
@@ -199,7 +199,7 @@ export default function ValarPage() {
       </section>
 
       {/* ============ FLOOR PLANS ============ */}
-      <section id="floor-plans" className="scroll-mt-36 py-24 bg-[#F7F7F7]">
+      <section id="floor-plans" className="scroll-mt-44 py-24 bg-[#F7F7F7]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Floor Plans"
@@ -234,7 +234,7 @@ export default function ValarPage() {
       </section>
 
       {/* ============ EMI CALCULATOR ============ */}
-      <section id="emi" className="scroll-mt-36 py-24 bg-white">
+      <section id="emi" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Home Loan"
@@ -249,7 +249,7 @@ export default function ValarPage() {
       </section>
 
       {/* ============ AMENITIES ============ */}
-      <section id="amenities" className="scroll-mt-36 py-24 bg-[#0F0F0F] relative overflow-hidden">
+      <section id="amenities" className="scroll-mt-44 py-24 bg-[#0F0F0F] relative overflow-hidden">
         <div className="absolute inset-0 pattern-grid opacity-10" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <FadeIn>
@@ -270,7 +270,7 @@ export default function ValarPage() {
       </section>
 
       {/* ============ LOCATION ============ */}
-      <section id="location" className="scroll-mt-36 py-24 bg-white">
+      <section id="location" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Location Advantages"
@@ -310,7 +310,7 @@ export default function ValarPage() {
       </section>
 
       {/* ============ FAQ ============ */}
-      <section id="faq" className="scroll-mt-36 py-24 bg-[#F7F7F7]">
+      <section id="faq" className="scroll-mt-44 py-24 bg-[#F7F7F7]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
           <div className="flex flex-col gap-3">
@@ -328,7 +328,7 @@ export default function ValarPage() {
       </section>
 
       {/* ============ CTA ============ */}
-      <section id="enquire" className="scroll-mt-36 py-20 bg-[#D42B2B] relative overflow-hidden">
+      <section id="enquire" className="scroll-mt-44 py-20 bg-[#D42B2B] relative overflow-hidden">
         <div className="absolute inset-0 pattern-grid opacity-10" />
         <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center text-white">
           <FadeIn>

@@ -91,7 +91,7 @@ export default function ProjectsPage() {
       <Navbar />
 
       {/* ============ HERO ============ */}
-      <section className="relative bg-white pt-20 overflow-hidden">
+      <section className="relative bg-white pt-26 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text — on its own light background, never over the image */}
           <FadeIn>
@@ -143,7 +143,7 @@ export default function ProjectsPage() {
       <SectionNav items={sectionNav} />
 
       {/* ============ OVERVIEW ============ */}
-      <section id="overview" className="scroll-mt-36 py-24 bg-white">
+      <section id="overview" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <FadeIn direction="right">
             <div className="relative">
@@ -190,7 +190,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ GALLERY ============ */}
-      <section id="gallery" className="scroll-mt-36 py-24 bg-[#0F0F0F]">
+      <section id="gallery" className="scroll-mt-44 py-24 bg-[#0F0F0F]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeIn>
             <Eyebrow light>Visual Journey</Eyebrow>
@@ -204,7 +204,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ MASTER PLAN ============ */}
-      <section id="masterplan" className="scroll-mt-36 py-24 bg-[#F7F7F7]">
+      <section id="masterplan" className="scroll-mt-44 py-24 bg-[#F7F7F7]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Master Plan"
@@ -249,7 +249,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ FLOOR PLANS + PRICE ============ */}
-      <section id="floor-plans" className="scroll-mt-36 py-24 bg-white">
+      <section id="floor-plans" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Floor Plans"
@@ -288,7 +288,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ EMI CALCULATOR ============ */}
-      <section id="emi" className="scroll-mt-36 py-24 bg-white">
+      <section id="emi" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Home Loan"
@@ -306,7 +306,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ PAYMENT PLAN ============ */}
-      <section id="payment" className="scroll-mt-36 py-24 bg-[#F7F7F7]">
+      <section id="payment" className="scroll-mt-44 py-24 bg-[#F7F7F7]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Payment Schedule"
@@ -352,7 +352,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ AMENITIES ============ */}
-      <section id="amenities" className="scroll-mt-36 py-24 bg-[#0F0F0F] relative overflow-hidden">
+      <section id="amenities" className="scroll-mt-44 py-24 bg-[#0F0F0F] relative overflow-hidden">
         <div className="absolute inset-0 pattern-grid opacity-10" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <FadeIn>
@@ -370,7 +370,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ SPECIFICATIONS ============ */}
-      <section id="specifications" className="scroll-mt-36 py-24 bg-[#F7F7F7]">
+      <section id="specifications" className="scroll-mt-44 py-24 bg-[#F7F7F7]">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <SectionHeader eyebrow="Specifications" title="Crafted to Last" description="Tap any category to see what goes into your home." />
           <SpecsAccordion />
@@ -378,7 +378,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ LOCATION ============ */}
-      <section id="location" className="scroll-mt-36 py-24 bg-white">
+      <section id="location" className="scroll-mt-44 py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeader
             eyebrow="Location Advantages"
@@ -420,7 +420,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ FAQ ============ */}
-      <section id="faq" className="scroll-mt-36 py-24 bg-[#F7F7F7]">
+      <section id="faq" className="scroll-mt-44 py-24 bg-[#F7F7F7]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <SectionHeader eyebrow="FAQ" title="Frequently Asked Questions" />
           <div className="flex flex-col gap-3">
@@ -438,7 +438,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ============ CTA ============ */}
-      <section id="enquire" className="scroll-mt-36 relative py-24 overflow-hidden">
+      <section id="enquire" className="scroll-mt-44 relative py-24 overflow-hidden">
         <Image src={images.nightView} alt="" fill sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#D42B2B]/95 to-[#0F0F0F]/90" />
         <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center text-white">

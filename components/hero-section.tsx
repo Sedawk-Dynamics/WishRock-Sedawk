@@ -33,7 +33,7 @@ export default function HeroSection() {
   }, [go, index])
 
   return (
-    <section id="home" className="relative w-full bg-white pt-20">
+    <section id="home" className="relative w-full bg-white pt-26">
       <div
         className="relative w-full aspect-[16/9] overflow-hidden bg-white"
         role="region"
